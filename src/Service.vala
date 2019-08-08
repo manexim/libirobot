@@ -70,7 +70,9 @@ public class iRobot.Service {
                         uint8 buffer[256];
                         s.receive (buffer);
 
-                        on_new_device ();
+                        if ((string) buffer != "irobotmcs") {
+                            on_new_device ();
+                        }
                     } catch (Error e) {
                         stderr.printf (e.message);
                     }
