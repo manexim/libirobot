@@ -23,7 +23,7 @@ public class iRobot.Service {
     private static Service? _instance;
     private Socket socket;
 
-    public signal void on_new_device ();
+    public signal void on_new_device (string message);
 
     public static Service instance {
         get {
@@ -71,7 +71,7 @@ public class iRobot.Service {
                         s.receive (buffer);
 
                         if ((string) buffer != "irobotmcs") {
-                            on_new_device ();
+                            on_new_device ((string) buffer);
                         }
                     } catch (Error e) {
                         stderr.printf (e.message);

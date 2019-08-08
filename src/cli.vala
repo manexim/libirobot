@@ -22,8 +22,8 @@
 
 public static int main (string[] args) {
     var service = iRobot.Service.instance;
-    service.on_new_device.connect (() => {
-        print ("Found new robot\n");
+    service.on_new_device.connect ((message) => {
+        print ("Found new robot: %s\n", message);
     });
 
     new MainLoop ().run ();
